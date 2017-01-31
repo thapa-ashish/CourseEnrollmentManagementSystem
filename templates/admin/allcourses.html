@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        {% extends "templates/admin/index.html" %} 
+        {% load staticfiles %} 
+        {% block content %}
+     
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Course Code</th>
+                    <th>Course Fee</th>
+                    <th>Instructor</th>
+                </tr>
+            </thead>
+              {% for course in courses %}
+            <tbody>
+                <tr class="info ">
+                    <td>{{course.course_name}}</td>
+                    <td>{{course.course_code}}</td>
+                    <td>{{course.course_fee}}</td>
+                    <td>{{course.instructor.firstname}} {{course.instructor.lastname}}</td>
+                    <td><a href="/admin/editcourse/{{course.id}}" <p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></p></a></td>
+                    <td><a href="/admin/deletecourse/{{course.id}}"<p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></a></td>
+                </tr>                 
+            </tbody>
+              {% endfor %}
+        </table>
+        
+    
+     <ul class="pagination">
+     {% if courses.has_previous %}
+              <li><a href="?page={{ courses.previous_page_number }}">Previous</a></li>
+          {% endif %}
+          {% for pg in courses.paginator.page_range %}
+              {% if courses.number == pg %}
+                  <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
+              {% else %}
+                  <li><a href="?page={{ pg }}">{{ pg }}</a></li>
+              {% endif %}
+          {% endfor %}
+          {% if courses.has_next %}
+              <li><a href="?page={{ courses.next_page_number }}">Next</a></li>
+          {% endif %}
+      </ul>
+      
+        
+        
+        
+        
+        
+        
+        {% endblock %}
+    </body>
+    
+  
+    
+    
+    
+    
+    
+    
+    
+</html>

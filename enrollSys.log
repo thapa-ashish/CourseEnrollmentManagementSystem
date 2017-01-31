@@ -1,0 +1,16 @@
+2016-10-19 04:34:01,011 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/Django-1.9.10-py2.7.egg/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python2.7/site-packages/Django-1.9.10-py2.7.egg/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ashish/Documents/LiClipse Workspace/enrollSys/enrollSys/views.py", line 12, in loginPage
+    return render(request,"view/login.html")
+  File "/usr/local/lib/python2.7/site-packages/Django-1.9.10-py2.7.egg/django/shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "/usr/local/lib/python2.7/site-packages/Django-1.9.10-py2.7.egg/django/template/loader.py", line 96, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/site-packages/Django-1.9.10-py2.7.egg/django/template/loader.py", line 43, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: view/login.html
+2016-10-19 04:34:01,468 [WARNING] django.request: Not Found: /favicon.ico
